@@ -20,7 +20,9 @@
   
   
 </table>
-　
+<%# guest user %>
+<% unless user.guest_user? %>
+
 <div class='row'>
   <% if current_user != user %>
     <td><%= render "relationships/btn", user: user, options: { class: ""} %></td>
@@ -30,3 +32,5 @@
     <% end %>
   <% end %>
 </div>
+
+<% end %>
