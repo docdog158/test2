@@ -15,5 +15,11 @@ class FavoritesController < ApplicationController
     #非同期通信
     #redirect_to request.referer
   end
+  
+  #通知機能
+  after_create do
+    create_notification(user_id: book.user_id)
+  end
+
 
 end

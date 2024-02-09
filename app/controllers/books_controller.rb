@@ -13,8 +13,10 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
-    @book.user_id = current_user.id
+    #通知機能のため変更
+    #@book = Book.new(book_params)
+    #@book.user_id = current_user.id
+    @book = current_user.book.new(book_params)
     if @book.save
       redirect_to book_path(@book), notice: "You have created book successfully."
     else
