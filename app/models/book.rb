@@ -2,11 +2,15 @@ class Book < ApplicationRecord
   
   belongs_to :user
   has_many :favorites, dependent: :destroy
-  has_many :book_comments, dependent: :destroy
   
   #通知機能
   has_many :notifications, as: :notifiable, dependent: :destroy
+
+
+  has_many :book_comments, dependent: :destroy
   
+
+  #通知機能
   after_create do
     user.followers.each do |follower|
       notifications.create(user_id: follower.id)

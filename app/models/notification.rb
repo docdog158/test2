@@ -1,11 +1,9 @@
 class Notification < ApplicationRecord
-  #通知機能
   include Rails.application.routes.url_helpers
   
   belongs_to :user
   belongs_to :notifiable, polymorphic: true
   
-  #通知機能
   def message
     if notifiable_type === "Book"
       "フォローしている#{notifiable.user.name}さんが#{notifiable.title}を投稿しました"
@@ -18,8 +16,7 @@ class Notification < ApplicationRecord
     if notification.notifiable_type === "Book"
       book_path(notifiable.id)
     else
-      user_path(notifiable.user.id) 
+      user_path(notifiable.user.id)
     end
   end
-  #終わり
 end

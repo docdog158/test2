@@ -17,9 +17,7 @@ class FavoritesController < ApplicationController
   end
   
   #通知機能
-  after_create do
-    create_notification(user_id: book.user_id)
-  end
+
 
 
 end
